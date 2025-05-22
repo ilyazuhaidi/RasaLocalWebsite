@@ -34,7 +34,9 @@
   <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible peer-hover:opacity-100 peer-hover:visible hover:opacity-100 hover:visible transition-opacity z-50">
     <ul class="text-sm text-gray-800">
       <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">Profile</li>
-      <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Recipes</li>
+      <a href="{{ route('recipes.my') }}">
+        <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Recipes</li>
+      </a>
       <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Drafts</li>
       <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Groups</li>
       <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">Log Out</li>

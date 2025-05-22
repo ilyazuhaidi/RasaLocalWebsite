@@ -17,6 +17,16 @@
         </div>
     @endif
 
+    @if ($errors->any())
+    <div class="mt-6 p-4 border border-red-600 bg-red-100 text-red-800 font-mono text-sm rounded">
+        <ul class="list-disc list-inside">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <form action="{{ route('recipes.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
 
@@ -29,6 +39,9 @@
             <label for="category" class="block mb-2 font-mono text-sm font-semibold">Category</label>
             <select id="category" name="category" class="w-full border border-gray-300 rounded px-4 py-2 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-teal-600" required>
                 <option value="" disabled selected>Select category</option>
+                <option value="Nyonya">Malay</option>
+                <option value="Nyonya">Chinese</option>
+                <option value="Nyonya">Indian</option>
                 <option value="Nyonya">Nyonya</option>
                 <option value="East Malaysia">East Malaysia</option>
                 <option value="Modern">Modern</option>

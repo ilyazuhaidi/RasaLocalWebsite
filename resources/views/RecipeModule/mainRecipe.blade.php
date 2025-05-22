@@ -24,7 +24,7 @@
 <section class="w-full flex justify-center mt-12">
     <a href="{{ url('add-recipe') }}"
        class="bg-[#800000] text-white px-8 py-4 rounded-full shadow-lg text-sm sm:text-base tracking-widest 
-              hover:bg-gray-200 hover:text-black transition duration-300 ease-in-out {{ request()->is('main-recipe') ? 'font-bold' : '' }}">
+              hover:bg-gray-200 hover:text-black transition duration-300 ease-in-out {{ request()->is('add-recipe') ? 'font-bold' : '' }}">
         CLICK HERE TO SHARE YOUR RECIPES WITH US
     </a>
 </section>
