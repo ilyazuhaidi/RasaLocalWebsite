@@ -5,23 +5,26 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
+//home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+//Recipe Module
 Route::get('/main-recipe', function () {
     return view('RecipeModule.mainRecipe');
 });
-
-// Show the form
+// Show the add recipe
 Route::get('add-recipe', [RecipeController::class, 'create'])->name('recipes.create');
-
 // Handle form submission
 Route::post('add-recipe', [RecipeController::class, 'store'])->name('recipes.store');
-
 //My Recipes Page
 Route::get('my-recipes', [RecipeController::class, 'myRecipes'])->name('recipes.my');
 Route::get('recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');
 Route::put('recipes/{id}', [RecipeController::class, 'update'])->name('recipes.update');
 Route::delete('recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy');
+//CategoryRecipes
+Route::get('/recipes/category/{category}', [RecipeController::class, 'showByCategory'])->name('recipes.byCategory');
+Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+
 
 
 

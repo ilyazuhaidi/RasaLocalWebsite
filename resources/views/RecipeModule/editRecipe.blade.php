@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Edit Recipe')
+@section('content')
+    @include('header')
 
 @section('content')
     <div class="max-w-3xl mx-auto px-6 py-10">

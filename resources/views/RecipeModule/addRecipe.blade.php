@@ -3,7 +3,7 @@
 @section('title', 'Rasa Local')
 
 @section('content')
-    @include('headers.recipeheader')
+    @include('header')
 
 
 <div class="max-w-3xl mx-auto px-6 sm:px-10 flex-grow">

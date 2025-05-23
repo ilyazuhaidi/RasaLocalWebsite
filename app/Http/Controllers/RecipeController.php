@@ -30,7 +30,7 @@ class RecipeController extends Controller
         $imagePath = $request->file('image')->store('recipes', 'public');
 
         Recipe::create([
-            'user_id' => $this->currentUserId(),
+            'user_id' => 1, // use a fixed user ID for now
             'title' => $request->title,
             'category' => $request->category,
             'description' => $request->description,
@@ -42,8 +42,8 @@ class RecipeController extends Controller
 
     public function myRecipes()
     {
-        $recipes = Recipe::where('user_id', $this->currentUserId())->latest()->get();
-        return view('RecipeModule.myRecipes', compact('recipes'));
+        $recipes = Recipe::where('user_id', 1)->latest()->get();
+        return view('RecipeModule.myRecipe', compact('recipes'));
     }
 
     public function edit($id)
@@ -97,4 +97,19 @@ class RecipeController extends Controller
 
         return redirect()->route('recipes.my')->with('success', 'Recipe deleted successfully.');
     }
+
+        public function showByCategory($category)
+    {
+        $recipes = Recipe::where('category', $category)->latest()->get();
+        return view('RecipeModule.categoryRecipe', compact('recipes', 'category'));
+
+    }
+
+        public function show($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        return view('RecipeModule.recipeDetails', compact('recipe'));
+    }
+
+
 }

@@ -3,6 +3,9 @@
 @section('title', 'My Recipes')
 
 @section('content')
+    @include('header')
+
+@section('content')
     <div class="max-w-5xl mx-auto px-6 py-10">
         <h2 class="text-3xl font-bold mb-6 text-center">My Submitted Recipes</h2>
 
@@ -18,10 +21,13 @@
             <div class="grid gap-6 md:grid-cols-2">
                 @foreach ($recipes as $recipe)
                     <div class="border border-gray-200 rounded p-4 shadow">
-                        <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->title }}" class="w-full h-48 object-cover mb-4 rounded">
+                        <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="Recipe Image">
                         <h3 class="text-xl font-semibold">{{ $recipe->title }}</h3>
                         <p class="text-sm text-gray-500">{{ $recipe->category }}</p>
-                        <p class="text-gray-700 mt-2">{{ $recipe->description }}</p>
+                        <div class="mt-4 text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                            {!! nl2br(e($recipe->description)) !!}
+                        </div>
+
 
                         <div class="mt-4 flex justify-between">
                             <a href="{{ route('recipes.edit', $recipe->id) }}" class="text-blue-600 hover:underline">Edit</a>

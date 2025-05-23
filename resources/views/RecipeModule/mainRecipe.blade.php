@@ -3,7 +3,7 @@
 @section('title', 'Rasa Local')
 
 @section('content')
-    @include('headers.recipeheader')
+    @include('header')
 
 
     <section class="relative max-w-[90rem] mx-auto mt-10">
@@ -51,10 +51,11 @@
                 MALAY
                 </h3>
 
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <a href="{{ route('recipes.byCategory', ['category' => 'Malay']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
             <article class="relative w-64 h-[400px]">
                 <img 
@@ -67,10 +68,11 @@
                 <h3 class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold tracking-widest underline decoration-white decoration-2 underline-offset-4 text-center">
                     CHINESE
                 </h3>
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <a href="{{ route('recipes.byCategory', ['category' => 'Chinese']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
             <article class="relative w-64 h-[400px]">
                 <img 
@@ -83,10 +85,11 @@
                 <h3 class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold tracking-widest underline decoration-white decoration-2 underline-offset-4 text-center">
                     INDIAN
                 </h3>
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <a href="{{ route('recipes.byCategory', ['category' => 'Indian']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
         </section>       
 </main>
@@ -106,10 +109,11 @@
                 NYONYA
                 </h3>
 
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <a href="{{ route('recipes.byCategory', ['category' => 'Nyonya']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
             <article class="relative w-64 h-[400px]">
                 <img 
@@ -122,10 +126,11 @@
                 <h3 class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold tracking-widest underline decoration-white decoration-2 underline-offset-4 text-center">
                     EAST MALAYSIA
                 </h3>
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                 <a href="{{ route('recipes.byCategory', ['category' => 'East Malaysia']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
             <article class="relative w-64 h-[400px]">
                 <img 
@@ -138,10 +143,11 @@
                 <h3 class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold tracking-widest underline decoration-white decoration-2 underline-offset-4 text-center">
                     MODERN
                 </h3>
-                <button class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
-                    READ MORE
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <a href="{{ route('recipes.byCategory', ['category' => 'Modern']) }}" 
+                    class="absolute bottom-8 left-6 bg-white text-black text-xs font-mono tracking-widest px-6 py-3 flex items-center gap-2">
+                READ MORE
+                <i class="fas fa-chevron-right"></i>
+                </a>
             </article>
     </section>
     </section>

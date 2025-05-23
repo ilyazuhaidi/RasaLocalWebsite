@@ -7,18 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('category');
-            $table->text('description');
-            $table->string('image_path');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id(); // This is what your recipes.user_id will reference
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('recipes');
+        Schema::dropIfExists('users');
     }
 };
+

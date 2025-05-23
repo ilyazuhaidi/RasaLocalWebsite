@@ -3,7 +3,7 @@
 @section('title', 'Rasa Local')
 
 @section('content')
- @include('headers.homeheader')
+ @include('header')
 
 
 <main class="relative">

@@ -11,9 +11,11 @@ class Recipe extends Model
 
     // Allow mass assignment for these fields
     protected $fillable = [
+        'user_id',
         'title',
         'category',
         'description',
         'image_path',
     ];
+
 }
