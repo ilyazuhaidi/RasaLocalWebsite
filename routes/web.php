@@ -31,8 +31,17 @@ Route::delete('recipes/{id}', [RecipeController::class, 'destroy'])->name('recip
 
 
 // Routes for Review and Rating Module
-Route::middleware(['auth'])->group(function () {
-    Route::post('/reviews/{review}/report', [ReviewController::class, 'report']);
-});
+    
+// Show review form
+Route::get('/review', [ReviewController::class, 'create'])->name('reviews.create');
+
+// Submit a review
+Route::post('/review', [ReviewController::class, 'store'])->name('reviews.store');
+
+// Show all reviews
+Route::get('/reviews', [ReviewController::class, 'show'])->name('reviews.show');
+
+// Report a review
+Route::post('/review/{review}/report', [ReviewController::class, 'report'])->name('reviews.report');
 
 
