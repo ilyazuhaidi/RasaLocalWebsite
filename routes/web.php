@@ -31,17 +31,9 @@ Route::delete('recipes/{id}', [RecipeController::class, 'destroy'])->name('recip
 
 
 // Routes for Review and Rating Module
-    
-// Show review form
-Route::get('/review', [ReviewController::class, 'create'])->name('reviews.create');
-
-// Submit a review
-Route::post('/review', [ReviewController::class, 'store'])->name('reviews.store');
-
-// Show all reviews
-Route::get('/reviews', [ReviewController::class, 'show'])->name('reviews.show');
-
-// Report a review
-Route::post('/review/{review}/report', [ReviewController::class, 'report'])->name('reviews.report');
+Route::get('/review', [ReviewController::class, 'create'])->name('reviews.create'); // Show review form
+Route::post('/review', [ReviewController::class, 'store'])->name('reviews.store'); // Submit a review
+Route::get('/reviews', [ReviewController::class, 'show'])->name('reviews.show'); // Show all reviews
+Route::post('/review/{review}/report', [ReviewController::class, 'report'])->name('reviews.report'); // Report a review
 
 
