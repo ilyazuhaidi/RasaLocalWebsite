@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends Controller
 {
-    // Show the Add Recipe form
+    private function currentUserId()
+    {
+        return 1; // simulate logged-in user
+    }
+
     public function create()
     {
         return view('RecipeModule.addRecipe');
     }
 
-    // Store the new recipe
     public function store(Request $request)
     {
         $request->validate([
@@ -27,7 +30,7 @@ class RecipeController extends Controller
         $imagePath = $request->file('image')->store('recipes', 'public');
 
         Recipe::create([
-            'user_id' => auth()->id(),
+            'user_id' => $this->currentUserId(),
             'title' => $request->title,
             'category' => $request->category,
             'description' => $request->description,
@@ -37,24 +40,21 @@ class RecipeController extends Controller
         return redirect()->back()->with('success', 'Recipe submitted successfully!');
     }
 
-    // Show current user's recipes
     public function myRecipes()
     {
-        $recipes = Recipe::where('user_id', auth()->id())->latest()->get();
+        $recipes = Recipe::where('user_id', $this->currentUserId())->latest()->get();
         return view('RecipeModule.myRecipes', compact('recipes'));
     }
 
-    // Show the Edit Recipe form
     public function edit($id)
     {
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', auth()->id())
+                        ->where('user_id', $this->currentUserId())
                         ->firstOrFail();
 
         return view('RecipeModule.editRecipe', compact('recipe'));
     }
 
-    // Update the recipe
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -65,11 +65,10 @@ class RecipeController extends Controller
         ]);
 
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', auth()->id())
+                        ->where('user_id', $this->currentUserId())
                         ->firstOrFail();
 
         if ($request->hasFile('image')) {
-            // Optional: delete old image
             if ($recipe->image_path) {
                 Storage::disk('public')->delete($recipe->image_path);
             }
@@ -84,11 +83,10 @@ class RecipeController extends Controller
         return redirect()->route('recipes.my')->with('success', 'Recipe updated successfully.');
     }
 
-    // Delete the recipe
     public function destroy($id)
     {
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', auth()->id())
+                        ->where('user_id', $this->currentUserId())
                         ->firstOrFail();
 
         if ($recipe->image_path) {

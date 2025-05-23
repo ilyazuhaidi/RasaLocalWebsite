@@ -21,29 +21,39 @@
         <a href="#" class="hover:text-teal-700">Contact</a>
         <a href="#" class="hover:text-teal-700">Members</a>
 
-<div class="relative">
-  <!-- Trigger Button -->
-  <button class="flex items-center space-x-2 peer focus:outline-none cursor-pointer">
-    <i class="fas fa-bell text-black"></i>
-    <div class="w-8 h-8 rounded-full bg-purple-700 text-white flex items-center justify-center font-semibold text-sm select-none">N</div>
-    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
+<div class="relative group inline-block">
+    <!-- Trigger Button -->
+    <button class="flex items-center space-x-2 focus:outline-none">
+        <i class="fas fa-bell text-black"></i>
 
-  <!-- Dropdown Menu -->
-  <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible peer-hover:opacity-100 peer-hover:visible hover:opacity-100 hover:visible transition-opacity z-50">
-    <ul class="text-sm text-gray-800">
-      <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">Profile</li>
-      <a href="{{ route('recipes.my') }}">
-        <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Recipes</li>
-      </a>
-      <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Drafts</li>
-      <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Groups</li>
-      <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">Log Out</li>
-    </ul>
-  </div>
+        <!-- Profile Picture -->
+        <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-300">
+            <img 
+                src="{{ asset('images/default-photo.jpg') }}" 
+                alt="User Photo" 
+                class="w-full h-full object-cover">
+        </div>
+
+        <!-- Dropdown Arrow -->
+        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Dropdown Menu -->
+    <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
+        <ul class="text-sm text-gray-800">
+            <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">Profile</li>
+            <a href="{{ route('recipes.my') }}">
+                <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Recipes</li>
+            </a>
+            <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Drafts</li>
+            <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Groups</li>
+            <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">Log Out</li>
+        </ul>
+    </div>
 </div>
+
 
     </nav>
 </header>
