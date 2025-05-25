@@ -3,7 +3,7 @@
 @section('title', 'Search Recipes')
 
 @section('content')
-    @include('header') {{-- This line includes the header --}}
+    @include('header')
 
     {{-- Background Image Section --}}
     <section class="relative max-w-[90rem] mx-auto mt-10">
@@ -16,41 +16,50 @@
         />
     </section>
 
-    <div class="max-w-4xl mx-auto px-6 sm:px-10 mt-8">
-        <h2 class="text-3xl font-bold mb-4">Search Recipes</h2>
+    <section class="max-w-7xl mx-auto px-6 mt-20">
+        <h2 class="text-4xl font-extrabold text-[#1a5e5e] mb-8 text-center">SEARCH RECIPES</h2>
 
-        <form method="GET" action="{{ route('recipes.search') }}" class="mb-6">
+        @if(isset($query) && $query !== '')
+            <p class="mb-4 text-gray-600 text-center text-lg">
+                {{ $recipes->count() }} result{{ $recipes->count() === 1 ? '' : 's' }} found for 
+                "<strong>{{ $query }}</strong>"
+            </p>
+        @endif
+
+        <form method="GET" action="{{ route('recipes.search') }}" class="mb-10 max-w-2xl mx-auto">
             <input
                 type="text"
                 name="q"
                 value="{{ old('q', $query) }}"
                 placeholder="Search by title, category, or description"
-                class="w-full border p-2 rounded shadow"
+                class="w-full border border-gray-300 p-3 rounded-lg shadow"
             />
         </form>
 
         @if($recipes->isEmpty())
-            <p class="text-gray-500">No recipes found.</p>
+            <p class="text-center text-gray-500 text-lg">No recipes found.</p>
         @else
-            <ul>
+            <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($recipes as $recipe)
-                    <li class="mb-4 p-4 border border-gray-300 rounded bg-gray-50 flex space-x-4 items-start">
+                    <li class="border border-gray-200 rounded-lg shadow bg-white">
                         <img 
                             src="{{ asset($recipe->image_path) }}" 
                             alt="{{ $recipe->title }}" 
-                            class="w-32 h-24 object-cover rounded"
+                            class="w-full h-48 object-cover rounded-t-lg"
                         />
-                        <div>
-                            <h3 class="text-xl font-semibold">{{ $recipe->title }}</h3>
-                            <p class="text-gray-700">{{ $recipe->description }}</p>
-                            <p class="text-sm text-gray-500">Category: {{ $recipe->category }}</p>
-                            <a href="{{ route('recipes.show', $recipe->id) }}" class="text-teal-600 hover:underline">View Recipe</a>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-teal-800">{{ $recipe->title }}</h3>
+                            <p class="text-gray-700 text-sm mt-2 mb-2">{{ \Illuminate\Support\Str::limit($recipe->description, 100) }}</p>
+                            <p class="text-xs text-gray-500 mb-2">Category: {{ $recipe->category }}</p>
+                            <a href="{{ route('recipes.show', $recipe->id) }}" class="inline-block mt-2 text-sm text-white bg-teal-700 hover:bg-teal-800 px-4 py-2 rounded transition">
+                                View Recipe
+                            </a>
                         </div>
                     </li>
                 @endforeach
             </ul>
         @endif
-    </div>
+    </section>
 
     <!-- Back to Top Button -->
     <button
@@ -78,5 +87,4 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
-
 @endsection
