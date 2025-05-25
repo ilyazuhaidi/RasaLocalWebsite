@@ -40,6 +40,9 @@ Route::get('/reviews', [ReviewController::class, 'show'])->name('reviews.show');
 Route::post('/review/{review}/report', [ReviewController::class, 'report'])->name('reviews.report'); // Report a review
 
 
+
+
+
 //Routes for Searching and Filtering Module
 use App\Http\Controllers\SearchController;
 

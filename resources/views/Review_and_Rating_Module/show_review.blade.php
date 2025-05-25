@@ -3,7 +3,7 @@
 @section('title', 'All Reviews')
 
 @section('content')
-    @include('headers.homeheader') {{-- Include header --}}
+    @include('header') {{-- Include header --}}
 
     <div class="max-w-3xl mx-auto px-6 sm:px-10 flex-grow">
         <h2 class="text-3xl font-bold text-center my-6">All Reviews</h2>
