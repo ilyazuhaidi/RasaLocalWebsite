@@ -16,7 +16,9 @@
         <a href="{{ url('main-recipe') }}" class="{{ request()->is('main-recipe') ? 'text-teal-700' : 'hover:text-teal-700' }}">
             Recipes
         </a>
-        <a href="#" class="hover:text-teal-700">Search Recipe</a>
+        <a href="{{ route('recipes.search') }}" class="{{ request()->is('search-recipes') ? 'text-teal-700' : 'hover:text-teal-700' }}">
+            Search Recipe
+        </a>
         <a href="#" class="hover:text-teal-700">Saved Recipes</a>
         <a href="#" class="hover:text-teal-700">Contact</a>
         <a href="#" class="hover:text-teal-700">Members</a>

@@ -41,3 +41,6 @@ Route::post('/review/{review}/report', [ReviewController::class, 'report'])->nam
 
 
 //Routes for Searching and Filtering Module
+use App\Http\Controllers\SearchController;
+
+Route::get('/search-recipes', [SearchController::class, 'index'])->name('recipes.search');
