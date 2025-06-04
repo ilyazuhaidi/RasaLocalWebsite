@@ -18,4 +18,8 @@ class Recipe extends Model
         'image_path',
     ];
 
+    public function savedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'saved_recipes')->withTimestamps();
+    }
 }

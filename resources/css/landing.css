@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #e6e1da;
+}
+
+.header {
+    background-color: #ffffff;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.header span {
+    font-style: italic;
+    color: #107070;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.btn-signup {
+    padding: 5px 10px;
+    background-color: #107070;
+    color: white;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.login-section img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.login-box {
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    margin-top: 0;
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box input {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.login-box button {
+    padding: 10px;
+    background-color: #107070;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.info-section {
+    max-width: 500px;
+    margin-left: 30px;
+}
+
+.info-section h2 {
+    font-size: 32px;
+    color: #107070;
+}
+
+.info-section span {
+    font-style: italic;
+}
+
+.info-section h3 {
+    color: #107070;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-section {
+        margin-left: 0;
+    }
+}

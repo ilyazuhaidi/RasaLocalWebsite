@@ -110,6 +110,4 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
         return view('RecipeModule.recipeDetails', compact('recipe'));
     }
-
-
 }

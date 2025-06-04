@@ -16,5 +16,30 @@
         {!! nl2br(e($recipe->description)) !!}
     </div>
 
+        @auth
+            @php
+                $isSaved = auth()->user()->savedRecipes->contains($recipe->id);
+            @endphp
+
+            @if($isSaved)
+                <form action="{{ route('recipes.unsave', $recipe->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200">
+                        Unsave
+                    </button>
+                </form>
+            @else
+                <form action="{{ route('recipes.save', $recipe->id) }}" method="POST" class="mt-4">
+                    @csrf
+                    <button type="submit" class="px-4 py-2 bg-gray-300 text-black rounded">Save Recipe</button>
+                </form>
+            @endif
+        @else
+            <a href="{{ route('login') }}" class="text-blue-600 underline">Log in to save this recipe</a>
+        @endauth
+
 </div>
+
 @endsection

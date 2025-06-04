@@ -19,7 +19,7 @@
         <a href="{{ route('recipes.search') }}" class="{{ request()->is('search-recipes') ? 'text-teal-700' : 'hover:text-teal-700' }}">
             Search Recipe
         </a>
-        <a href="#" class="hover:text-teal-700">Saved Recipes</a>
+        <a href="{{ route('recipes.saved') }}" class="hover:text-teal-700">Saved Recipes</a>
         <a href="#" class="hover:text-teal-700">Contact</a>
         <a href="#" class="hover:text-teal-700">Members</a>
 
@@ -42,7 +42,11 @@
 
             <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
                 <ul class="text-sm text-gray-800">
-                    <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">Profile</li>
+                    <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">
+                        <a href="{{ route('profile') }}" class="block border-b border-gray-200 px-4 py-3 hover:bg-gray-50">
+                            Profile
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('recipes.my') }}" class="block border-b border-gray-200 px-4 py-3 hover:bg-gray-50">
                             My Recipes
@@ -50,7 +54,14 @@
                     </li>
                     <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Drafts</li>
                     <li class="border-b border-gray-200 px-4 py-3 hover:bg-gray-50 cursor-pointer">My Groups</li>
-                    <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">Log Out</li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full text-left px-4 py-3 hover:bg-gray-50">
+                                Log Out
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
