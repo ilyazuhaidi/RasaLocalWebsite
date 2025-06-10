@@ -15,7 +15,7 @@
                 <div class="p-4 border border-gray-300 rounded mb-4 bg-gray-50">
                     <div class="flex justify-between">
                         <div>
-                            <strong>{{ $review->user->name }}</strong>
+                            <strong>{{ $review->user->username }}</strong>
                             <span class="text-sm text-gray-500 ml-2">{{ $review->created_at->diffForHumans() }}</span>
                         </div>
                         <div class="text-yellow-500 font-bold">{{ $review->rating }} ★</div>
