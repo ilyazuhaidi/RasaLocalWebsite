@@ -40,29 +40,23 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 Route::middleware('auth')->post('/recipes/{recipe}/save', [RecipeController::class, 'toggleSave'])->name('recipes.save');
 
 
-//Recipe Module
+// Recipe Modules
 Route::get('/main-recipe', function () {
     return view('RecipeModule.mainRecipe');
 });
-// Show the add recipe
-Route::get('add-recipe', [RecipeController::class, 'create'])->name('recipes.create');
-// Handle form submission
-Route::post('add-recipe', [RecipeController::class, 'store'])->name('recipes.store');
-//My Recipes Page
-Route::get('my-recipes', [RecipeController::class, 'myRecipes'])->name('recipes.my');
-Route::get('recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');
-Route::put('recipes/{id}', [RecipeController::class, 'update'])->name('recipes.update');
-Route::delete('recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy');
-//CategoryRecipes
 Route::get('/recipes/category/{category}', [RecipeController::class, 'showByCategory'])->name('recipes.byCategory');
 Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 
+// Recipe Modules (only for logged-in users)
+Route::middleware(['auth'])->group(function () {
+    Route::get('add-recipe', [RecipeController::class, 'create'])->name('recipes.create');
+    Route::post('add-recipe', [RecipeController::class, 'store'])->name('recipes.store');
 
-
-
-
-
-
+    Route::get('my-recipes', [RecipeController::class, 'myRecipes'])->name('recipes.my');
+    Route::get('recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');
+    Route::put('recipes/{id}', [RecipeController::class, 'update'])->name('recipes.update');
+    Route::delete('recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy');
+});
 
 
 // Routes for Review and Rating Module

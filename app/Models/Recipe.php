@@ -22,4 +22,10 @@ class Recipe extends Model
     {
         return $this->belongsToMany(User::class, 'saved_recipes')->withTimestamps();
     }
+
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    }
+
 }

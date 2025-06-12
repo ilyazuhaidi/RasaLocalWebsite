@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends Controller
 {
-    private function currentUserId()
-    {
-        return 1; // simulate logged-in user
-    }
-
     public function create()
     {
         return view('RecipeModule.addRecipe');
@@ -30,7 +26,7 @@ class RecipeController extends Controller
         $imagePath = $request->file('image')->store('recipes', 'public');
 
         Recipe::create([
-            'user_id' => 1, // use a fixed user ID for now
+            'user_id' => Auth::id(),
             'title' => $request->title,
             'category' => $request->category,
             'description' => $request->description,
@@ -42,14 +38,14 @@ class RecipeController extends Controller
 
     public function myRecipes()
     {
-        $recipes = Recipe::where('user_id', 1)->latest()->get();
+        $recipes = Recipe::where('user_id', Auth::id())->latest()->get();
         return view('RecipeModule.myRecipe', compact('recipes'));
     }
 
     public function edit($id)
     {
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', $this->currentUserId())
+                        ->where('user_id', Auth::id())
                         ->firstOrFail();
 
         return view('RecipeModule.editRecipe', compact('recipe'));
@@ -65,7 +61,7 @@ class RecipeController extends Controller
         ]);
 
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', $this->currentUserId())
+                        ->where('user_id', Auth::id())
                         ->firstOrFail();
 
         if ($request->hasFile('image')) {
@@ -86,7 +82,7 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         $recipe = Recipe::where('id', $id)
-                        ->where('user_id', $this->currentUserId())
+                        ->where('user_id', Auth::id())
                         ->firstOrFail();
 
         if ($recipe->image_path) {
@@ -98,16 +94,15 @@ class RecipeController extends Controller
         return redirect()->route('recipes.my')->with('success', 'Recipe deleted successfully.');
     }
 
-        public function showByCategory($category)
+    public function showByCategory($category)
     {
         $recipes = Recipe::where('category', $category)->latest()->get();
         return view('RecipeModule.categoryRecipe', compact('recipes', 'category'));
-
     }
 
-        public function show($id)
+    public function show($id)
     {
-        $recipe = Recipe::findOrFail($id);
+        $recipe = Recipe::with('user')->findOrFail($id);
         return view('RecipeModule.recipeDetails', compact('recipe'));
     }
 }
